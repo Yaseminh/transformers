@@ -30,6 +30,11 @@ class TextClassificationPipelineTests(unittest.TestCase):
     model_mapping = MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
     tf_model_mapping = TF_MODEL_FOR_SEQUENCE_CLASSIFICATION_MAPPING
 
+    # These 2 model types require different inputs than those of the usual text models.
+    to_skip = {"LayoutLMv2Config", "LayoutLMv3Config"}
+    model_mapping = {config: model for config, model in model_mapping if config.__name__ not in to_skip}
+    tf_model_mapping = {config: model for config, model in tf_model_mapping if config.__name__ not in to_skip}
+
     @require_torch
     def test_small_model_pt(self):
         text_classifier = pipeline(

@@ -273,9 +273,6 @@ class LayoutLMv2ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         {
             "document-question-answering": LayoutLMv2ForQuestionAnswering,
             "feature-extraction": LayoutLMv2Model,
-            "question-answering": LayoutLMv2ForQuestionAnswering,
-            "text-classification": LayoutLMv2ForSequenceClassification,
-            "token-classification": LayoutLMv2ForTokenClassification,
             "zero-shot": LayoutLMv2ForSequenceClassification,
         }
         if is_torch_available()
@@ -287,9 +284,6 @@ class LayoutLMv2ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
     ):
         if pipeline_test_casse_name in [
-            "QAPipelineTests",
-            "TextClassificationPipelineTests",
-            "TokenClassificationPipelineTests",
             "ZeroShotClassificationPipelineTests",
         ]:
             # `LayoutLMv2Config` was never used in pipeline tests (`test_pt_LayoutLMv2Config_XXX`) due to lack of tiny

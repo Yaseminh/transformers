@@ -289,20 +289,11 @@ class LayoutLMv3ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         {
             "document-question-answering": LayoutLMv3ForQuestionAnswering,
             "feature-extraction": LayoutLMv3Model,
-            "question-answering": LayoutLMv3ForQuestionAnswering,
-            "text-classification": LayoutLMv3ForSequenceClassification,
-            "token-classification": LayoutLMv3ForTokenClassification,
             "zero-shot": LayoutLMv3ForSequenceClassification,
         }
         if is_torch_available()
         else {}
     )
-
-    # TODO: Fix the failed tests
-    def is_pipeline_test_to_skip(
-        self, pipeline_test_casse_name, config_class, model_architecture, tokenizer_name, processor_name
-    ):
-        return True
 
     def setUp(self):
         self.model_tester = LayoutLMv3ModelTester(self)
