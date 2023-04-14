@@ -32,8 +32,8 @@ class TextClassificationPipelineTests(unittest.TestCase):
 
     # These 2 model types require different inputs than those of the usual text models.
     to_skip = {"LayoutLMv2Config", "LayoutLMv3Config"}
-    model_mapping = {config: model for config, model in model_mapping.items() if config.__name__ not in to_skip}
-    tf_model_mapping = {config: model for config, model in tf_model_mapping.items() if config.__name__ not in to_skip}
+    model_mapping = {config: model for config, model in model_mapping.items() if config.__name__ not in {"LayoutLMv2Config", "LayoutLMv3Config"}}
+    tf_model_mapping = {config: model for config, model in tf_model_mapping.items() if config.__name__ not in {"LayoutLMv2Config", "LayoutLMv3Config"}}
 
     @require_torch
     def test_small_model_pt(self):
