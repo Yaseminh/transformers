@@ -289,7 +289,6 @@ class LayoutLMv3ModelTest(ModelTesterMixin, PipelineTesterMixin, unittest.TestCa
         {
             "document-question-answering": LayoutLMv3ForQuestionAnswering,
             "feature-extraction": LayoutLMv3Model,
-            "zero-shot": LayoutLMv3ForSequenceClassification,
         }
         if is_torch_available()
         else {}
